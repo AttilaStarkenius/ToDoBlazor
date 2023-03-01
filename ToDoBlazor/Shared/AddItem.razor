@@ -1,0 +1,38 @@
+﻿
+
+<div class="border-bottom bg-white">
+    <EditForm EditContext="editContext" OnValidSubmit="OnAddToDoItems" id="todoForm" class="py-4 container">
+        <div class="input-group input-group-lg">
+            <InputText @bind-Value="createItem.Text" type="text" class="form-control" id="todoInput" placeholder="Add todo..." autofocus></InputText>
+          @* <ValidationMessage For="@(() => createItem.Text)"></ValidationMessage>*@
+            <div class="input-group-append input-group-lg">
+                <button type="submit" id="addItemBtn" class="btn btn-info">ADD</button>
+            </div>
+        </div>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+    </EditForm>
+</div>
+
+
+
+@code {
+    private CreateItem createItem = new CreateItem();
+    private EditContext editContext = default!;
+
+    [Parameter]
+    public EventCallback<CreateItem> AddToDoItems { get; set; }
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(createItem);
+    }
+
+    public async Task OnAddToDoItems()
+    {
+        await AddToDoItems.InvokeAsync(createItem);
+        createItem.Text = string.Empty;
+    }
+
+
+}

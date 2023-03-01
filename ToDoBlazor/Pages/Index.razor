@@ -1,0 +1,38 @@
+﻿@page "/"
+
+
+<PageTitle>Index</PageTitle>
+
+
+<AddItem AddToDoItems="AddItem"></AddItem>
+
+<Items ToDoItems="items"></Items>
+
+@code {
+    private List<Item> items = new List<Item>();
+
+    [Inject]
+    public IToDoClient ToDoClient { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var res = await ToDoClient.GetAsync();
+        if (res is not null)
+            items = res.ToList();
+    }
+
+    private async Task AddItem(CreateItem createItem)
+    {
+        if (createItem is null)
+        {
+            throw new ArgumentNullException(nameof(createItem));
+        }
+
+        var item = await ToDoClient.PostAsync(createItem);
+
+        if(item is null)
+            throw new ArgumentNullException(nameof(item));
+
+        items.Add(item);
+    }
+}

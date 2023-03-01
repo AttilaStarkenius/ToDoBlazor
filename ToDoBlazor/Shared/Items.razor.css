@@ -1,0 +1,8 @@
+﻿.btn-danger {
+    float: right;
+}
+
+.change {
+    text-decoration: line-through;
+    background-color: #0dcaf0;
+}

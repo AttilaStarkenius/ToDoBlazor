@@ -1,0 +1,51 @@
+﻿@inject IToDoClient todoClient
+
+<div class="container">
+    <ul id="toDoItems" class="list-group align-self-sm-stretch mt-4">
+        @foreach (var item in ToDoItems)
+        {
+            //ToDo Check if nessesary!
+            <li @onclick="async () => await Completed(item)" class="list-group-item @(item.Completed ? "change" : "")">@item.Text<button @onclick="async () => await Delete(item)" @onclick:stopPropagation="true" class="btn btn-danger">X</button></li>
+        }
+    </ul>
+</div>
+
+@code {
+
+    [Parameter]
+    public List<Item> ToDoItems { get; set; } = new List<Item>();
+
+    private async Task Completed(Item item)
+    {
+        if (item is null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
+
+        item.Completed = item.Completed ? false : true;
+
+        var isCompleted = await todoClient.PutAsync(item);
+
+        if(!isCompleted)
+            item.Completed = item.Completed ? false : true;
+
+        //Handle Errors
+    }
+
+    private async Task Delete(Item item)
+    {
+        if (item is null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
+
+        var isRemoved = await todoClient.RemoveAsync(item.Id);
+
+        if (isRemoved)
+        {
+            ToDoItems.Remove(item);
+        }
+
+    }
+
+}
