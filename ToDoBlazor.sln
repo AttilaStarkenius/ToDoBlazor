@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoBlazor.Shared", "ToDoBl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoBlazor.API", "ToDoBlazor.API\ToDoBlazor.API.csproj", "{75AF0C4C-B841-4096-A663-449E446D6053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoBlazor.TodoAPI", "ToDoBlazor.TodoAPI\ToDoBlazor.TodoAPI.csproj", "{44769A78-A028-4B44-A147-C0444435F928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoBlazor.TodoAPI", "ToDoBlazor.TodoAPI\ToDoBlazor.TodoAPI.csproj", "{44769A78-A028-4B44-A147-C0444435F928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoBlazor.Tests", "ToDoBlazor.Tests\ToDoBlazor.Tests.csproj", "{79F1D4B0-936F-4DE2-B2F2-A95C9A076F2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{44769A78-A028-4B44-A147-C0444435F928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44769A78-A028-4B44-A147-C0444435F928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44769A78-A028-4B44-A147-C0444435F928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F1D4B0-936F-4DE2-B2F2-A95C9A076F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F1D4B0-936F-4DE2-B2F2-A95C9A076F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F1D4B0-936F-4DE2-B2F2-A95C9A076F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F1D4B0-936F-4DE2-B2F2-A95C9A076F2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
